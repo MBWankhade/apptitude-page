@@ -53,23 +53,43 @@ function MathTopics() {
     });
   };
 
+  const topicsArray = Object.keys(topics);
+
   return (
     <div style={{ maxWidth: "600px", margin: "0 auto", padding: "20px", fontFamily: "Arial, sans-serif" }}>
       <h1 style={{ textAlign: "center", fontSize: "24px", marginBottom: "20px" }}>Math Topics</h1>
-      <ul style={{ listStyle: "none", padding: 0 }}>
-        {Object.keys(topics).map((topic, index) => (
-          <li key={index} style={{ fontSize: "18px", marginBottom: "10px" }}>
-            <input 
-              type="checkbox" 
-              id={topic} 
-              checked={topics[topic]} 
-              onChange={() => handleCheckboxChange(topic)} 
-              style={{ marginRight: "10px", transform: "scale(1.5)" }} 
-            />
-            <label htmlFor={topic} style={{ marginLeft: "10px" }}>{topic}</label>
-          </li>
-        ))}
-      </ul>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <ul style={{ listStyle: "none", padding: 0, width: "48%" }}>
+          {topicsArray.map((topic, index) => (
+            index % 2 === 0 &&
+            <li key={index} style={{ fontSize: "18px", marginBottom: "10px" }}>
+              <input 
+                type="checkbox" 
+                id={topic} 
+                checked={topics[topic]} 
+                onChange={() => handleCheckboxChange(topic)} 
+                style={{ marginRight: "10px", transform: "scale(1.5)" }} 
+              />
+              <label htmlFor={topic} style={{ marginLeft: "10px" }}>{topic}</label>
+            </li>
+          ))}
+        </ul>
+        <ul style={{ listStyle: "none", padding: 0, width: "48%" }}>
+          {topicsArray.map((topic, index) => (
+            index % 2 !== 0 &&
+            <li key={index} style={{ fontSize: "18px", marginBottom: "10px" }}>
+              <input 
+                type="checkbox" 
+                id={topic} 
+                checked={topics[topic]} 
+                onChange={() => handleCheckboxChange(topic)} 
+                style={{ marginRight: "10px", transform: "scale(1.5)" }} 
+              />
+              <label htmlFor={topic} style={{ marginLeft: "10px" }}>{topic}</label>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
